@@ -28,7 +28,7 @@ There are a few references that you will need to add. These are references to th
 
 ![reference manager dialog showing required assemblies selected](https://github.com/echkode/PhantomBrigadeMod_WorkshopLevel/assets/48565771/99912e0c-54a3-4d1f-aec0-b39bb381dcfa)
 
-In the screenshot you will see 4 assemblies (DLLs) with checkmarks to the left of their name. These checkmarks means the assemblies are selected and will be added as references when I click the OK button. You may not have any assemblies listed. In that case, you will need to click the Browse... button and then navigate to the location of the assemblies for the game. I'm using the Epic Games store so for me the game assemblies are found in `C:\Program Files\Epic Games\PhantomBrigade\PhantomBrigade_Data\Managed`. If you're using a stock install of Steam, you'll find them in `C:\Program Files (x86)\Steam\steamapps\common\Phantom Brigade\PhantomBrigade_Data\Managed`.
+In the screenshot you will see 4 assemblies (DLLs) with checkmarks to the left of their name. These checkmarks means the assemblies are selected and will be added as references when I click the OK button. You may not have any assemblies listed. In that case, you will need to click the Browse... button and then navigate to the location of the assemblies for the game. I'm using the Epic Games store so for me the game assemblies are found in `C:\Program Files\Epic Games\PhantomBrigade\PhantomBrigade_Data\Managed`. If you're using a stock install of Steam, you'll find them in `C:\Program Files (x86)\Steam\steamapps\common\Phantom Brigade\PhantomBrigade_Data\Managed`. If you have installed the game to a custom location and are having problems compiling the code in the project included with this repo, please see the [Advanced Topics section](#advanced-topics) for details on how to fix the project to work with your custom installation.
 
 The 4 assemblies shown are the minimum needed to build a mod. For this mod, the Entitas assembly is required as well. After you have selected the mods and hit the OK button, you will need to add some files to the project.
 
@@ -45,3 +45,15 @@ In the [Discord forum post](https://discord.com/channels/380929397445754890/1147
 ![dotPeek disassembly of PhantomBrigade.Overworld.Systems.OverworldBaseLevelSystem.RefreshBaseLevels](https://github.com/echkode/PhantomBrigadeMod_WorkshopLevel/assets/48565771/792efb60-abc1-4e86-9771-f8371427807b)
 
 The patch code will go into the `Patch.cs` file. There are different ways to patch functions in the game. This mod uses a `Prefix` patch and replaces the entire function with my own C# code. You can also do much more surgical fixes with a `Transpiler` patch which works at the IL level (a low-level language in .NET). Go to the [Harmony documentation](https://harmony.pardeike.net/articles/intro.html) for more information about patching functions.
+
+## Advanced Topics
+
+This project won't compile if you have installed the game to a different location than the default one. To get this project to compile, you will need to edit the csproj file to change the path to the game. Close the project in Visual Studio. Next, open the `WorkshopLevel.csproj` file in a text editor and scroll down until you see the section of code that matches what's boxed in red in the screenshot.
+
+![property group for game installation path]()
+
+The section defines three variables named `SteamInstallationPath`, `EpicInstallationPath`, and `GameInstallationPath`. The first two point to the folder where the game is installed for Steam and Epic, respectively. If you only have the game from one of the stores, that's the variable you will want to change. You will want to change the text between the `>` and `<` characters to be the path to where the game is installed on your machine.
+
+By default the Steam path is used. If you have the game from Epic, you will also have to change the `GameInstallationPath` variable. Replace the text between the '(' and ')' characters with `EpicInstallationPath`.
+
+Once you have made these changes, save the file and exit the editor. Reopen the project in Visual Studio. Now the references will use the correct versions of the assemblies that match your game installation.
