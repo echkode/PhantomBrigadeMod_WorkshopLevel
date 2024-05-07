@@ -50,10 +50,10 @@ The patch code will go into the `Patch.cs` file. There are different ways to pat
 
 This project won't compile if you have installed the game to a different location than the default one. To get this project to compile, you will need to edit the csproj file to change the path to the game. Close the project in Visual Studio. Next, open the `WorkshopLevel.csproj` file in a text editor and scroll down until you see the section of code that matches what's boxed in red in the screenshot.
 
-![property group for game installation path]()
+![property group for game installation path](https://github.com/echkode/PhantomBrigadeMod_WorkshopLevel/assets/48565771/32c03d05-e320-4333-8e45-999ecceaac5d)
 
-The section defines three variables named `SteamInstallationPath`, `EpicInstallationPath`, and `GameInstallationPath`. The first two point to the folder where the game is installed for Steam and Epic, respectively. If you only have the game from one of the stores, that's the variable you will want to change. You will want to change the text between the `>` and `<` characters to be the path to where the game is installed on your machine.
+The section defines three variables named `SteamInstallationPath`, `EpicInstallationPath`, and `GameInstallationPath`. The first two point to the folder where the game is installed for Steam and Epic, respectively. If you have the game from only one of the stores, that's the variable you will want to change. You will want to change the text between the `>` and `<` characters to be the path to where the game is installed on your machine.
 
-By default the Steam path is used. If you have the game from Epic, you will also have to change the `GameInstallationPath` variable. Replace the text between the '(' and ')' characters with `EpicInstallationPath`.
+By default the Steam path is used. If you have the game from Epic, you will also have to change the `GameInstallationPath` variable. Replace the text between the `(` and `)` characters with `EpicInstallationPath`.
 
 Once you have made these changes, save the file and exit the editor. Reopen the project in Visual Studio. Now the references will use the correct versions of the assemblies that match your game installation.
