@@ -27,7 +27,12 @@ namespace EchKode.PBMods.WorkshopLevel
 			modPath = metadata.path;
 
 			var patchAssembly = typeof(ModLink).Assembly;
-			Debug.Log($"Mod {metadata.id} is executing OnLoad | Using HarmonyInstance.PatchAll on assembly ({patchAssembly.FullName}) | Directory: {metadata.directory} | Full path: {metadata.path}");
+			Debug.LogFormat(
+				"Mod {0} is executing OnLoad | Using HarmonyInstance.PatchAll on assembly ({1}) | Directory: {2} | Full path: {3}",
+				metadata.id,
+				patchAssembly.FullName,
+				metadata.directory,
+				metadata.path);
 			harmonyInstance.PatchAll(patchAssembly);
 
 			if (Harmony.DEBUG)
