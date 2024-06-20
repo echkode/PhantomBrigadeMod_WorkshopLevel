@@ -1,4 +1,4 @@
-id: Echkode.PBMods.WorkshopLevel
+id: com.echkode.pbmods.workshoplevel
 ver: 1
 includesConfigOverrides: false
 includesConfigEdits: false
@@ -6,7 +6,7 @@ includesLibraries: true
 includesTextures: false
 includesLocalizationEdits: false
 includesLocalizations: false
-gameVersionMin: 1.1.2
-gameVersionMax: 1.1.3
+gameVersionMin: 1.3.3
+gameVersionMax: 1.3.3
 name: Workshop Level
 desc: Use highest level from parts in base inventory to set workshop part level

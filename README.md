@@ -2,7 +2,7 @@
 
 A library mod for [Phantom Brigade](https://braceyourselfgames.com/phantom-brigade/) to change the workshop level calculation.
 
-It is compatible with game version **1.1.3** (Epic/Steam).
+It is compatible with game version **1.3.3** (Epic/Steam).
 
 This is a demonstration mod to document how to create a library (code) mod from scratch and provide a basic template that can be easily reused.
 

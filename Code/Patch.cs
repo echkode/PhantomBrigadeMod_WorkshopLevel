@@ -4,7 +4,7 @@
 using HarmonyLib;
 
 using PhantomBrigade;
-using PBOverworldBaseLevelSystem = PhantomBrigade.Overworld.Systems.OverworldBaseLevelSystem;
+using PhantomBrigade.Overworld.Systems;
 
 using UnityEngine;
 
@@ -13,7 +13,7 @@ namespace EchKode.PBMods.WorkshopLevel
 	[HarmonyPatch]
 	static class Patch
 	{
-		[HarmonyPatch(typeof(PBOverworldBaseLevelSystem), "RefreshBaseLevels")]
+		[HarmonyPatch(typeof(OverworldBaseLevelSystem), nameof(OverworldBaseLevelSystem.RefreshBaseLevels))]
 		[HarmonyPrefix]
 		static bool Obls_RefreshBaseLevels()
 		{
@@ -79,8 +79,8 @@ namespace EchKode.PBMods.WorkshopLevel
 
 			Debug.LogFormat(
 				"Mod {0} ({1}) New base level: {0} based on highest part level in inventory or loaded out on squad | Previous base level: {1}",
-				ModLink.modIndex,
-				ModLink.modID,
+				ModLink.ModIndex,
+				ModLink.ModID,
 				newLevel,
 				currentLevel);
 			persistent.ReplaceBaseProvinceLevel(newLevel);
